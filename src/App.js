@@ -30,7 +30,7 @@ class App extends React.Component {
         animal: "Bird",
         breed: "Cockatiel"
       }),
-      React.createElement(Pet, { name: "Doink", animal: "Cat", breed: "Mix" })
+      React.createElement(Pet, { name: "Doink", animal: "Tom", breed: "Mix" })
     ]);
   }
 }
