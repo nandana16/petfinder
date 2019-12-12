@@ -1,37 +1,28 @@
 import React from "react";
-import { render } from "react-dom";
-
-const Pet = (props) => {
-  return React.createElement("div", {}, [
-    React.createElement("h1", {}, props.name),
-    React.createElement("h2", {}, props.animal),
-    React.createElement("h2", {}, props.breed)
-  ]);
-};
+import ReactDOM from "react-dom";
+import { Router, Link } from "@reach/router";
+// eslint-disable-next-line import/no-unresolved
+import Results from "./Results";
+// eslint-disable-next-line import/no-unresolved
+import Details from "./Details";
+import SearchParams from "./SearchParams";
 
 class App extends React.Component {
-  handleTitleClick() {
-    alert("you clicked the title");
-  }
   render() {
-    return React.createElement("div", {}, [
-      React.createElement(
-        "h1",
-        { onClick: this.handleTitleClick },
-        "Adopt Me!"
-      ),
-      React.createElement(Pet, {
-        name: "Luna",
-        animal: "Dog",
-        breed: "Havanese"
-      }),
-      React.createElement(Pet, {
-        name: "Pepper",
-        animal: "Bird",
-        breed: "Cockatiel"
-      }),
-      React.createElement(Pet, { name: "Doink", animal: "Tom", breed: "Mix" })
-    ]);
+    return (
+      <div>
+        <header>
+          <Link to="/">Adopt Me!</Link>
+        </header>
+        <Router>
+          <Results path="/" />
+          <Details path="/details/:id" />
+          <SearchParams path="/search-params" />
+        </Router>
+        ;
+      </div>
+    );
   }
 }
-render(React.createElement(App), document.getElementById("root"));
+
+ReactDOM.render(React.createElement(App), document.getElementById("root"));
